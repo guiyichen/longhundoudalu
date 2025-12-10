@@ -313,6 +313,96 @@ body {
     margin: 0;
 }
 
+/* 游戏图片展示模块样式 */
+.game-gallery-section {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.game-gallery-section .gallery-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.game-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+}
+
+.game-gallery .gallery-item {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-gallery .gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.game-gallery .gallery-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
+    background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+                linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+                linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    animation: loading 1.5s infinite;
+}
+
+.game-gallery .gallery-image.loaded {
+    background: none;
+    animation: none;
+}
+
+.game-gallery .gallery-item:hover .gallery-image {
+    transform: scale(1.05);
+}
+
+.game-gallery .gallery-caption {
+    padding: 12px;
+    background: #f8f9fa;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+/* 深色主题下的游戏图片展示 */
+.theme-dark .game-gallery .gallery-item {
+    background: #2d2d2d;
+}
+
+.theme-dark .game-gallery .gallery-caption {
+    background: #404040;
+    color: #ccc;
+}
+
+/* 高对比度主题下的游戏图片展示 */
+.theme-high-contrast .game-gallery .gallery-item {
+    background: #000;
+    border: 1px solid #fff;
+}
+
+.theme-high-contrast .game-gallery .gallery-caption {
+    background: #000;
+    color: #fff;
+    border-top: 1px solid #fff;
+}
+
 /* 图片展示模块样式 */
 .image-gallery-section {
     margin-top: 40px;
@@ -481,7 +571,7 @@ body {
 }
 
 .modal-image {
-    max-width: 100%;
+    max-width: 90vw;
     max-height: 80vh;
     display: block;
     margin: 0 auto;
@@ -771,6 +861,21 @@ body {
     .user-actions {
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    /* 游戏图片画廊移动端适配 */
+    .game-gallery {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .game-gallery .gallery-image {
+        max-height: 300px;
+    }
+
+    .game-gallery .gallery-caption {
+        padding: 10px;
+        font-size: 12px;
     }
 
     /* 图片画廊移动端适配 */

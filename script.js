@@ -184,7 +184,8 @@ function initializeTheme() {
 
 // 初始化图片画廊功能
 function initializeGallery() {
-    const galleryImages = document.querySelectorAll('.gallery-image');
+    // 处理所有画廊图片，包括游戏图片和原有的图片
+    const galleryImages = document.querySelectorAll('.gallery-image, .game-gallery .gallery-image');
 
     galleryImages.forEach(img => {
         // 图片加载完成事件
