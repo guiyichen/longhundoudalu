@@ -144,6 +144,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // 为CDK码添加点击复制功能
+    const cdkCodes = document.querySelectorAll('.cdk-code');
+    cdkCodes.forEach(code => {
+        code.style.cursor = 'pointer';
+        code.title = '点击复制CDK兑换码';
+        code.addEventListener('click', function() {
+            const cdkCode = this.textContent.trim();
+            copyToClipboard(cdkCode);
+            showCopyNotification(`CDK兑换码 "${cdkCode}" 已复制到剪贴板！`);
+        });
+    });
+
     // 为iOS指南文本添加点击功能
     const iosGuideText = document.querySelector('.content-section .content-text strong');
     if (iosGuideText && iosGuideText.textContent.includes('未受信任的企业级开发者')) {
